@@ -1,0 +1,20 @@
+product:
+  type: lib
+  platforms: [jvm, android]
+
+dependencies:
+  - $compose.foundation: exported
+  - $compose.material3: exported
+  - io.ktor:ktor-client-core:2.3.6
+
+dependencies@android:
+  - androidx.activity:activity-compose:1.7.2: exported
+  - androidx.appcompat:appcompat:1.6.1: exported
+  - androidx.webkit:webkit:1.8.0: exported
+  - io.github.reactivecircus.cache4k:cache4k:0.12.0
+
+settings:
+  kotlin:
+    languageVersion: 1.9
+  compose:
+    enabled: true
