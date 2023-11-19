@@ -7,7 +7,3 @@ link_directories(proxy)
 add_library(jniproxy SHARED jniproxy.cpp)
 
 target_link_libraries(${PROJECT_NAME} proxy)
-
-
-
-
