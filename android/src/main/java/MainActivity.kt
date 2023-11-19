@@ -23,8 +23,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val result = TonUtilsProxy.startProxy(TonUtilsProxy.DEFAULT_PORT)
-        println("result=$result")
+        TonUtilsProxy.startProxy(TonUtilsProxy.DEFAULT_PORT).also { result ->
+            check(result == "OK")
+        }
 
         setContent {
             UrlContent("http://foundation.ton")
@@ -70,10 +71,10 @@ fun UrlContent(url: String) {
                                 )
                             )
                         ) as HttpURLConnection
+                        connection.requestMethod = request.method
                         headers.forEach { (key, value) ->
                             connection.setRequestProperty(key, value)
                         }
-                        connection.requestMethod = request.method
 
                         try {
                             return WebResourceResponse(
